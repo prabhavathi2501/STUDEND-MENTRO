@@ -50,11 +50,23 @@ const getUsers = async(req,res)=>{
         })
     }
     }
+    const allmentors = async(req,res)=>{
+       try {
+          const user = await db.collection("mentor").find().toArray();
+          res.status(200).send(user);
+        } catch (error) {
+          console.log(error);
+          res.json({message:"Error Occured in DB"});
+        }
+      
+      }
+      
 
 
 
 module.exports ={
     getUsers,
     getUserById,
-    create
+    create,
+    allmentors
 }
